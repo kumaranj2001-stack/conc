@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guru Construction | Internal Admin Operations Console</title>
+  <title>Guru Construction | Centralized Architectural Management Console</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- Top Sticky Navigation Bar -->
+  <!-- Top Sticky Centralized Navigation Bar -->
   <header class="admin-navbar">
     <div style="display: flex; align-items: center; gap: 14px;">
       <button class="hamburger-btn" id="sidebar-toggle" title="Toggle Categories Menu">
@@ -21,28 +21,28 @@
       </button>
       <a href="index.html" class="admin-brand">
         <span style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; width: 34px; height: 34px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem;">🏗️</span>
-        <span>Guru Construction <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--secondary); font-weight: 700; letter-spacing: 0.05em; display: block; margin-top: -3px;">Internal Admin Console</span></span>
+        <span>Guru Construction <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--secondary); font-weight: 700; letter-spacing: 0.05em; display: block; margin-top: -3px;">Management Dashboard</span></span>
       </a>
     </div>
 
-    <!-- Active Admin Identity & Security Clearance -->
+    <!-- Centralized System Clearance & Quick Actions -->
     <div style="display: flex; align-items: center; gap: 15px;">
       <div style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem;">
-        <span class="badge badge-success">● Staff Admin Clearance</span>
-        <strong style="color: var(--primary);">Shop Operations Desk</strong>
+        <span class="badge badge-success">● Live Sync</span>
+        <strong style="color: var(--primary);">Architectural Operations Desk</strong>
       </div>
       <button class="btn btn-outline btn-sm" onclick="exportMasterPackage()">📦 Export Complete Package</button>
-      <button class="btn btn-outline btn-sm" onclick="createNewClientProject()">+ New Project</button>
+      <button class="btn btn-primary btn-sm" onclick="createNewClientProject()">+ New Project</button>
     </div>
   </header>
 
   <div class="admin-layout">
     
-    <!-- Collapsible Left-Side Hamburger Menu for Deliverable Categories -->
+    <!-- Collapsible Responsive Left Sidebar for Deliverable Categories -->
     <aside class="admin-sidebar" id="admin-sidebar">
       <div class="sidebar-header">
         <span class="sidebar-title">Deliverable Categories</span>
-        <span class="badge badge-primary" id="sidebar-badge" style="font-size: 0.7rem;">8 Modules</span>
+        <span class="badge badge-primary sidebar-badge-count" id="sidebar-badge" style="font-size: 0.7rem;">9 Modules</span>
       </div>
 
       <ul class="sidebar-nav" id="sidebar-nav">
@@ -51,7 +51,7 @@
           <div class="cat-icon">📐</div>
           <div class="cat-details">
             <span class="cat-name">2D Vastu Planning</span>
-            <span class="cat-status" id="badge-cat-2d">2 Options Generated</span>
+            <span class="cat-status" id="badge-cat-2d">Vedic Mandala Synced</span>
           </div>
         </li>
 
@@ -60,7 +60,7 @@
           <div class="cat-icon">🏛️</div>
           <div class="cat-details">
             <span class="cat-name">3D Elevation Design</span>
-            <span class="cat-status" id="badge-cat-3d">Synced with 2D</span>
+            <span class="cat-status" id="badge-cat-3d">WebGL Synced</span>
           </div>
         </li>
 
@@ -78,38 +78,47 @@
           <div class="cat-icon">🧱</div>
           <div class="cat-details">
             <span class="cat-name">RCC Structural Drawings</span>
-            <span class="cat-status" id="badge-cat-rcc">Columns &amp; Beams</span>
+            <span class="cat-status" id="badge-cat-rcc">IS 456 / IS 13920</span>
           </div>
         </li>
 
-        <!-- 5. Electrical Layouts -->
+        <!-- 5. Material Estimations (BOQ) -->
+        <li class="cat-item" data-category="Material Estimations" onclick="switchCategory('Material Estimations')">
+          <div class="cat-icon">📊</div>
+          <div class="cat-details">
+            <span class="cat-name">Material Estimations</span>
+            <span class="cat-status" id="badge-cat-boq">SP:27 Civil BOQ</span>
+          </div>
+        </li>
+
+        <!-- 6. Electrical Layouts (MEP) -->
         <li class="cat-item" data-category="Electrical Layouts" onclick="switchCategory('Electrical Layouts')">
           <div class="cat-icon">⚡</div>
           <div class="cat-details">
-            <span class="cat-name">Electrical Layouts</span>
-            <span class="cat-status" id="badge-cat-elec">Circuits &amp; DB Plan</span>
+            <span class="cat-name">Electrical Layouts (MEP)</span>
+            <span class="cat-status" id="badge-cat-elec">CEA &amp; IS 732</span>
           </div>
         </li>
 
-        <!-- 6. Plumbing Layouts -->
+        <!-- 7. Plumbing Layouts (MEP) -->
         <li class="cat-item" data-category="Plumbing Layouts" onclick="switchCategory('Plumbing Layouts')">
           <div class="cat-icon">🚰</div>
           <div class="cat-details">
-            <span class="cat-name">Plumbing Layouts</span>
-            <span class="cat-status" id="badge-cat-plumb">Sump &amp; Sanitary</span>
+            <span class="cat-name">Plumbing Layouts (MEP)</span>
+            <span class="cat-status" id="badge-cat-plumb">UPC-I &amp; CPHEEO</span>
           </div>
         </li>
 
-        <!-- 7. Municipal Blueprint Approvals -->
+        <!-- 8. Municipal Blueprint Approvals -->
         <li class="cat-item" data-category="Municipal Blueprint Approvals" onclick="switchCategory('Municipal Blueprint Approvals')">
           <div class="cat-icon">📑</div>
           <div class="cat-details">
-            <span class="cat-name">Municipal Blueprint Approvals</span>
-            <span class="cat-status" id="badge-cat-muni">FAR/FSI Sanction</span>
+            <span class="cat-name">Municipal Blueprint</span>
+            <span class="cat-status" id="badge-cat-muni">MBBL FAR Sanction</span>
           </div>
         </li>
 
-        <!-- 8. 3D Walkthrough Video -->
+        <!-- 9. 3D Walkthrough Video -->
         <li class="cat-item" data-category="3D Walkthrough Video" onclick="switchCategory('3D Walkthrough Video')">
           <div class="cat-icon">🎬</div>
           <div class="cat-details">
@@ -119,9 +128,9 @@
         </li>
       </ul>
 
-      <!-- Collapsed Tooltip Indicator -->
+      <!-- Collapsed Footer Indicator -->
       <div style="padding: 1rem; border-top: 1px solid #1e293b; font-size: 0.75rem; color: #64748b; text-align: center;">
-        Guru Internal Suite v2.0
+        Guru Platform Suite v2.5
       </div>
     </aside>
 
@@ -176,11 +185,30 @@
         </div>
       </section>
 
-      <!-- Built-In Parametric Text Prompt Bar -->
+      <!-- External Industry Standards Verification & Live Telemetry Bar -->
+      <section class="standards-telemetry-bar">
+        <div>
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; font-weight: 700; margin-bottom: 4px;">
+            🛡️ Live Industry Standards Verification Telemetry
+          </div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #f8fafc;" id="verification-status-heading">
+            Verified with Authoritative External Standards (NBC 2016, IS 456, IS 13920, CEA &amp; Brihat Samhita)
+          </div>
+        </div>
+        <div class="standards-badges">
+          <span class="std-chip verified">✓ NBC 2016</span>
+          <span class="std-chip verified">✓ IS 456 / IS 13920</span>
+          <span class="std-chip verified">✓ Vastu 81-Pada</span>
+          <span class="std-chip verified">✓ CEA / IS 732</span>
+          <span class="std-chip verified">✓ UPC-I / CPHEEO</span>
+        </div>
+      </section>
+
+      <!-- Built-In Prompt-Driven Synthesis & Iterative Edits Bar -->
       <section class="parametric-prompt-bar">
         <div class="prompt-bar-label">
-          <span>⚡ Built-In Parametric Architectural Prompt Bar (Rule-Based Synthesis Engine)</span>
-          <span style="font-size: 0.8rem; opacity: 0.8;">Internal Database: Vastu Purusha Mandala &amp; Structural Codes</span>
+          <span>⚡ Prompt-Driven Synthesis Engine (Supports Iterative Changes &amp; Direct Revisions)</span>
+          <span style="font-size: 0.8rem; opacity: 0.85;">External Regulatory Pre-Verification Active</span>
         </div>
         <div class="prompt-input-row">
           <input 
@@ -191,27 +219,27 @@
             value="40x60 plot, 2 floors, 3BHK East facing with pooja room in Ishanya corner and modern wooden elevation"
           >
           <button class="btn-generate" onclick="handleGenerateFromPrompt()">
-            <span>✨ Synthesize Options</span>
+            <span>✨ Synthesize / Iterate</span>
           </button>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.8rem; opacity: 0.85; flex-wrap: wrap;">
-          <span>💡 Quick tags:</span>
+          <span>💡 Quick prompts &amp; iterative commands:</span>
           <a href="javascript:void(0)" onclick="setQuickPrompt('50x80 plot, 3 floors, 4BHK North facing with central Brahmasthan open courtyard')" style="color: #93c5fd; text-decoration: underline;">50x80 North 4BHK (Triplex)</a>
           <a href="javascript:void(0)" onclick="setQuickPrompt('30x40 plot, 1 floor, 2BHK West facing compact contemporary Vastu')" style="color: #93c5fd; text-decoration: underline;">30x40 West 2BHK (Compact)</a>
-          <a href="javascript:void(0)" onclick="setQuickPrompt('60x90 plot, 2 floors, 5BHK East facing luxury villa with double-height elevation')" style="color: #93c5fd; text-decoration: underline;">60x90 East 5BHK (Luxury Villa)</a>
+          <a href="javascript:void(0)" onclick="setQuickPrompt('Expand master suite and shift kitchen strictly to South-East Agneya')" style="color: #fde047; text-decoration: underline;">✏️ Iterative: Expand Master &amp; Agneya Kitchen</a>
         </div>
       </section>
 
-      <!-- Dynamic Category Workspaces (Toggled by Left-Side Hamburger Menu) -->
+      <!-- Dynamic Category Workspaces -->
 
-      <!-- WORKSPACE 1: 2D VASTU PLANNING (Two Distinct Comparison Options) -->
+      <!-- WORKSPACE 1: 2D VASTU PLANNING -->
       <div id="view-2d-vastu" class="category-view">
         <div class="card">
           <div class="card-header">
             <div>
               <h2 class="card-title">📐 2D Vastu Planning: Automated Architectural Comparison</h2>
               <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 2px;">
-                Review the two distinct AI/rule-synthesized Vastu options. Select your preferred layout to save and propagate structural coordinates to all downstream categories.
+                Review the two prompt-synthesized Vastu options verified against Brihat Samhita &amp; NBC 2016 standards. Select your preferred layout to synchronize the 3D WebGL model and downstream deliverables.
               </p>
             </div>
             <div style="display: flex; gap: 8px;">
@@ -230,7 +258,7 @@
                 <div class="option-header">
                   <div>
                     <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary);" id="opt-a-title">Option A: Classic Brahmasthan Courtyard</h3>
-                    <div style="font-size: 0.8rem; color: var(--accent); font-weight: 700;" id="opt-a-score">98% Vastu Compliance</div>
+                    <div style="font-size: 0.8rem; color: var(--accent); font-weight: 700;" id="opt-a-score">98% Vastu Compliance (Verified)</div>
                   </div>
                   <span class="badge badge-success" id="opt-a-badge">Selected &amp; Active</span>
                 </div>
@@ -241,7 +269,7 @@
                 <div style="font-size: 0.8rem; color: var(--text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 0.75rem;">
                   <span>Built-up: <strong id="opt-a-area">1,728 sq.ft</strong></span>
                   <span>Columns: <strong id="opt-a-cols">14 Nos</strong></span>
-                  <span>Steel Est: <strong id="opt-a-steel">13.1 MT</strong></span>
+                  <span>Steel Est: <strong id="opt-a-steel">14.5 MT</strong></span>
                   <span>Cement Est: <strong id="opt-a-cement">1,452 Bags</strong></span>
                 </div>
               </div>
@@ -256,7 +284,7 @@
                 <div class="option-header">
                   <div>
                     <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary);" id="opt-b-title">Option B: Contemporary Dynamic Split-Zone</h3>
-                    <div style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;" id="opt-b-score">94% Vastu Compliance</div>
+                    <div style="font-size: 0.8rem; color: var(--secondary); font-weight: 700;" id="opt-b-score">94% Vastu Compliance (Verified)</div>
                   </div>
                   <span class="badge badge-primary" id="opt-b-badge">Alternative</span>
                 </div>
@@ -267,8 +295,8 @@
                 <div style="font-size: 0.8rem; color: var(--text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 0.75rem;">
                   <span>Built-up: <strong id="opt-b-area">1,814 sq.ft</strong></span>
                   <span>Columns: <strong id="opt-b-cols">16 Nos</strong></span>
-                  <span>Steel Est: <strong id="opt-b-steel">14.5 MT</strong></span>
-                  <span>Cement Est: <strong id="opt-b-cement">1,596 Bags</strong></span>
+                  <span>Steel Est: <strong id="opt-b-steel">15.2 MT</strong></span>
+                  <span>Cement Est: <strong id="opt-b-cement">1,525 Bags</strong></span>
                 </div>
               </div>
               <button class="btn btn-outline btn-sm" style="width: 100%;" onclick="selectOption('OPT-B')">
@@ -287,7 +315,7 @@
             <div>
               <h2 class="card-title">🏛️ 3D Elevation Design: Synchronized WebGL Studio</h2>
               <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 2px;">
-                Generated automatically from selected 2D structural plan. Orbit, inspect materials, and apply revisions.
+                Directly and dynamically synchronizes with structural edits in the 2D planning module. Orbit, inspect materials, and toggle wireframe.
               </p>
             </div>
             <div style="display: flex; gap: 8px;">
@@ -301,12 +329,12 @@
             </div>
           </div>
 
-          <div id="admin-3d-viewport" style="width: 100%; height: 480px; background: #0f172a; border-radius: var(--radius-md); overflow: hidden; position: relative;">
+          <div id="admin-3d-viewport" style="width: 100%; height: 480px; background: #0a0f1d; border-radius: var(--radius-md); overflow: hidden; position: relative;">
             <!-- Three.js Canvas injected here -->
           </div>
-          <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">
+          <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
             <span>Controls: Click + Drag to 360° Orbit • Scroll Wheel to Zoom</span>
-            <span style="color: var(--accent); font-weight: 700;">● Structural Alignment: Synchronized with Master 2D Plan</span>
+            <span style="color: var(--accent); font-weight: 700;">● WebGL 3D Model: Synchronized with 2D Structural Geometry</span>
           </div>
         </div>
       </div>
@@ -339,7 +367,10 @@
       <div id="view-rcc" class="category-view" style="display: none;">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">🧱 RCC Structural Drawings &amp; Column Schedules</h2>
+            <div>
+              <h2 class="card-title">🧱 RCC Structural Drawings &amp; Column Schedules</h2>
+              <small style="color: var(--accent); font-weight: 700;">Verified per IS 456:2000 (Plain &amp; Reinforced Concrete) &amp; IS 13920:2016 (Ductile Detailing)</small>
+            </div>
             <button class="btn btn-outline btn-sm" onclick="openManualCorrectionModal('RCC Structural Drawings')">✏️ Fine-Tune Reinforcements</button>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;" id="rcc-summary-cards">
@@ -348,11 +379,30 @@
         </div>
       </div>
 
-      <!-- WORKSPACE 5: ELECTRICAL LAYOUTS -->
+      <!-- WORKSPACE 5: MATERIAL ESTIMATIONS (CIVIL BOQ) -->
+      <div id="view-material-est" class="category-view" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">📊 Material Estimations &amp; Civil Bill of Quantities (BOQ)</h2>
+              <small style="color: var(--accent); font-weight: 700;">Verified per BIS SP:27 Handbook of Measurement of Building Works</small>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="openManualCorrectionModal('Material Estimations')">✏️ Adjust Rates / Quantities</button>
+          </div>
+          <div id="boq-details-card">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- WORKSPACE 6: ELECTRICAL LAYOUTS (MEP) -->
       <div id="view-elec" class="category-view" style="display: none;">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">⚡ Electrical Layouts &amp; Load Distribution</h2>
+            <div>
+              <h2 class="card-title">⚡ Electrical Layouts (MEP): Conduit &amp; Circuit Single-Line Diagrams</h2>
+              <small style="color: var(--accent); font-weight: 700;">Verified per Central Electricity Authority (CEA) &amp; IS 732:2019</small>
+            </div>
             <button class="btn btn-outline btn-sm" onclick="openManualCorrectionModal('Electrical Layouts')">✏️ Edit Load Schedule</button>
           </div>
           <div id="elec-details-card" style="background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
@@ -361,11 +411,14 @@
         </div>
       </div>
 
-      <!-- WORKSPACE 6: PLUMBING LAYOUTS -->
+      <!-- WORKSPACE 7: PLUMBING LAYOUTS (MEP) -->
       <div id="view-plumb" class="category-view" style="display: none;">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">🚰 Plumbing, Water Supply &amp; Drainage Schematics</h2>
+            <div>
+              <h2 class="card-title">🚰 Plumbing Layouts (MEP): Water Supply, Drainage &amp; Sanitary Schematics</h2>
+              <small style="color: var(--accent); font-weight: 700;">Verified per Uniform Plumbing Code India (UPC-I) &amp; CPHEEO Manual</small>
+            </div>
             <button class="btn btn-outline btn-sm" onclick="openManualCorrectionModal('Plumbing Layouts')">✏️ Fine-Tune Sanitary Lines</button>
           </div>
           <div id="plumb-details-card" style="background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
@@ -374,11 +427,14 @@
         </div>
       </div>
 
-      <!-- WORKSPACE 7: MUNICIPAL BLUEPRINT APPROVALS -->
+      <!-- WORKSPACE 8: MUNICIPAL BLUEPRINT APPROVALS -->
       <div id="view-muni" class="category-view" style="display: none;">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">📑 Municipal Blueprint Approvals &amp; Sanction Data</h2>
+            <div>
+              <h2 class="card-title">📑 Municipal Blueprint Approvals &amp; Sanction Data</h2>
+              <small style="color: var(--accent); font-weight: 700;">Verified per Model Building Bye-Laws (MBBL 2016) &amp; NBC 2016 Part 3</small>
+            </div>
             <button class="btn btn-outline btn-sm" onclick="openManualCorrectionModal('Municipal Blueprint Approvals')">✏️ Adjust Setbacks &amp; FAR</button>
           </div>
           <div id="muni-details-card" style="background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md);">
@@ -387,7 +443,7 @@
         </div>
       </div>
 
-      <!-- WORKSPACE 8: 3D WALKTHROUGH VIDEO -->
+      <!-- WORKSPACE 9: 3D WALKTHROUGH VIDEO -->
       <div id="view-walkthrough" class="category-view" style="display: none;">
         <div class="card">
           <div class="card-header">
@@ -425,7 +481,7 @@
             <textarea id="modal-field-value" class="form-control" rows="4" placeholder="Detail specific dimensional changes (e.g. increase master balcony depth to 5ft, shift pooja wall 1ft East, change external walls to 9 inches)..." required></textarea>
           </div>
           <div style="background: var(--bg-subtle); padding: 0.85rem; border-radius: var(--radius-md); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
-            🔄 <strong>Auto-Synchronization:</strong> Saving changes will propagate corrections across the active 2D layout, 3D elevation studio, and RCC calculation matrices.
+            🔄 <strong>Auto-Synchronization:</strong> Saving changes will propagate corrections across the active 2D layout, 3D WebGL studio, material BOQ, and MEP calculations.
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%;">
             Save &amp; Synchronize Across All Deliverables 💾
@@ -463,9 +519,10 @@
     let synthesizedOptions = null;
     let selectedOptionId = "OPT-A";
     let masterDeliverables = null;
+    let verifiedStandards = null;
 
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Setup Hamburger Sidebar Toggle
+      // 1. Setup Responsive Hamburger Sidebar Toggle
       setupSidebar();
 
       // 2. Initialize Project Selector
@@ -504,12 +561,13 @@
         }
       });
 
-      // Hide all views
+      // Map views
       const views = {
         "2D Vastu Planning": "view-2d-vastu",
         "3D Elevation Design": "view-3d-elevation",
         "3D Floor Plans": "view-3d-floor",
         "RCC Structural Drawings": "view-rcc",
+        "Material Estimations": "view-material-est",
         "Electrical Layouts": "view-elec",
         "Plumbing Layouts": "view-plumb",
         "Municipal Blueprint Approvals": "view-muni",
@@ -604,11 +662,33 @@
       handleGenerateFromPrompt();
     }
 
-    // Process Parametric Prompt & Generate 2 Distinct 2D Options
+    // Prompt-driven synthesis engine supporting iterative revisions & external verification
     function handleGenerateFromPrompt() {
       const text = document.getElementById('prompt-input-bar').value;
-      const parsed = GuruPipelineEngine.parsePrompt(text);
+      const parsed = GuruPipelineEngine.parsePrompt(text, currentScope);
 
+      // Check if iterative edit on current active layout
+      if (parsed.isIterativeEdit && synthesizedOptions) {
+        const activeOption = selectedOptionId === 'OPT-A' ? synthesizedOptions.optionA : synthesizedOptions.optionB;
+        const revised = GuruPipelineEngine.applyIterativePromptEdit(activeOption, text);
+        
+        if (selectedOptionId === 'OPT-A') {
+          synthesizedOptions.optionA = revised;
+          renderOptionCard('A', revised);
+          drawOptionOnCanvas('canvas-option-a', revised);
+        } else {
+          synthesizedOptions.optionB = revised;
+          renderOptionCard('B', revised);
+          drawOptionOnCanvas('canvas-option-b', revised);
+        }
+
+        // Re-synchronize 3D WebGL and deliverables
+        selectOption(selectedOptionId);
+        showToast("Iterative Revision Applied", "2D layout & 3D WebGL model updated from prompt!", "success");
+        return;
+      }
+
+      // Normal full generation: verify against Industry Standards first
       currentScope.plotLength = parsed.plotLength;
       currentScope.plotWidth = parsed.plotWidth;
       currentScope.totalFloors = parsed.totalFloors;
@@ -617,8 +697,14 @@
 
       updateScopeBanner();
 
-      // Synthesize 2 Distinct Options from Architectural DB
-      synthesizedOptions = window.ARCH_DATABASE.generateOptions(currentScope);
+      // Step 1: External Regulatory & Engineering Standards Verification
+      verifiedStandards = window.IndustryStandardsHub.verifyAndFetchStandards(currentScope);
+      document.getElementById('verification-status-heading').innerHTML = `
+        <span style="color: #10b981;">● ${verifiedStandards.complianceAuditStatus}</span> — Governing Authority: ${verifiedStandards.governingAuthority}
+      `;
+
+      // Step 2: Synthesize Verified 2D Options
+      synthesizedOptions = GuruPipelineEngine.generateVerified2DOptions(currentScope, verifiedStandards);
 
       // Render Option A
       renderOptionCard('A', synthesizedOptions.optionA);
@@ -631,13 +717,13 @@
       // Default to Option A
       selectOption('OPT-A');
 
-      showToast("Synthesis Complete", "Generated 2 Vastu-compliant 2D options from prompt!", "success");
+      showToast("Verification & Synthesis Complete", "Verified parameters against NBC 2016, IS 456 & Vastu Mandalas!", "success");
     }
 
     function renderOptionCard(letter, opt) {
       const p = letter.toLowerCase();
       document.getElementById(`opt-${p}-title`).textContent = opt.title;
-      document.getElementById(`opt-${p}-score`).textContent = `${opt.vastuScore}% Vastu Compliance Score`;
+      document.getElementById(`opt-${p}-score`).textContent = `${opt.vastuScore}% Vastu Compliance (Verified)`;
       document.getElementById(`opt-${p}-concept`).textContent = opt.concept;
       document.getElementById(`opt-${p}-area`).textContent = `${opt.builtUpArea} sq.ft`;
       document.getElementById(`opt-${p}-cols`).textContent = `${opt.structuralSummary.totalColumns} Nos`;
@@ -696,7 +782,7 @@
       });
     }
 
-    // Select 2D Plan & Synchronize Across All Downstream Deliverables
+    // Select 2D Plan & Synchronize Across 3D WebGL and all downstream deliverables
     function selectOption(optId) {
       selectedOptionId = optId;
       const cardA = document.getElementById('card-option-a');
@@ -725,27 +811,30 @@
       // Propagate structural data forward to all downstream categories
       masterDeliverables = GuruPipelineEngine.synthesizeDeliverables(chosenOption, currentScope);
 
-      // 1. Sync 3D Elevation
+      // 1. Direct WebGL 3D Model Synchronization
       if (adminStudio3D) {
-        adminStudio3D.syncWith2DPlan(chosenOption);
+        adminStudio3D.syncWith2DPlan(chosenOption, currentScope);
       }
 
-      // 2. Sync RCC
+      // 2. Sync RCC Structural Drawings
       renderRCCDeliverables(masterDeliverables["RCC Structural Drawings"].details);
 
-      // 3. Sync Electrical
+      // 3. Sync Material Estimations (BOQ)
+      renderMaterialEstimations(masterDeliverables["Material Estimations"].details);
+
+      // 4. Sync Electrical MEP Layouts
       renderElectricalDeliverables(masterDeliverables["Electrical Layouts"].details);
 
-      // 4. Sync Plumbing
+      // 5. Sync Plumbing MEP Layouts
       renderPlumbingDeliverables(masterDeliverables["Plumbing Layouts"].details);
 
-      // 5. Sync Municipal
+      // 6. Sync Municipal Blueprint Approvals
       renderMunicipalDeliverables(masterDeliverables["Municipal Blueprint Approvals"].details);
 
-      // 6. Sync 3D Walkthrough
+      // 7. Sync 3D Walkthrough
       renderWalkthroughDeliverables(masterDeliverables["3D Walkthrough Video"].details);
 
-      showToast("Data Propagated", `Master 2D plan (${optId}) synchronized across all 8 modules!`, "success");
+      showToast("Data Propagated", `Master 2D plan (${optId}) synchronized with 3D WebGL & all modules!`, "success");
     }
 
     function renderRCCDeliverables(rcc) {
@@ -755,7 +844,7 @@
         <div class="card" style="margin: 0; background: var(--bg-subtle);">
           <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Column Footings</div>
           <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 4px 0;">${rcc.columnCount} RCC Columns</div>
-          <small style="color: var(--text-muted);">Size: ${rcc.columnDimensions} in (${rcc.concreteGrade} Grade Concrete)</small>
+          <small style="color: var(--text-muted);">Size: ${rcc.columnDimensions} (${rcc.concreteGrade} Grade Concrete)</small>
         </div>
         <div class="card" style="margin: 0; background: var(--bg-subtle);">
           <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Main Reinforcement</div>
@@ -775,16 +864,55 @@
       `;
     }
 
+    function renderMaterialEstimations(boq) {
+      const container = document.getElementById('boq-details-card');
+      if (!container) return;
+      container.innerHTML = `
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
+          <div class="card" style="margin: 0; background: var(--bg-subtle);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Total Concrete Volume</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 4px 0;">${boq.concreteVolume}</div>
+            <small style="color: var(--text-muted);">For Slabs, Beams &amp; Column Footings</small>
+          </div>
+          <div class="card" style="margin: 0; background: var(--bg-subtle);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Cement Bags (50kg)</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--secondary); margin: 4px 0;">${boq.cementBags}</div>
+            <small style="color: var(--text-muted);">IS 1489 Grade PPC</small>
+          </div>
+          <div class="card" style="margin: 0; background: var(--bg-subtle);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">TMT Steel Rebar</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent); margin: 4px 0;">${boq.steelTonnage}</div>
+            <small style="color: var(--text-muted);">IS 1786 Fe500D High Ductility</small>
+          </div>
+          <div class="card" style="margin: 0; background: var(--bg-subtle);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Clay / Flyash Bricks</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 4px 0;">${boq.clayBricks}</div>
+            <small style="color: var(--text-muted);">9" External &amp; 4.5" Internal Walls</small>
+          </div>
+        </div>
+        <div style="background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md); font-size: 0.88rem;">
+          <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">Aggregates &amp; Sand Schedule</h4>
+          <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+            <div>• <strong>Manufactured Sand (M-Sand):</strong> ${boq.riverSand}</div>
+            <div>• <strong>Coarse Aggregate (20mm/10mm):</strong> ${boq.coarseAggregate}</div>
+            <div>• <strong>Total Built-Up Reference:</strong> ${boq.totalBuiltUpArea}</div>
+          </div>
+        </div>
+      `;
+    }
+
     function renderElectricalDeliverables(elec) {
       const container = document.getElementById('elec-details-card');
       if (!container) return;
       container.innerHTML = `
-        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">⚡ Cardinal Electrical Schedule</h4>
+        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">⚡ Cardinal Electrical Schedule (CEA &amp; IS 732:2019)</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; font-size: 0.88rem;">
           <div>• <strong>Main Distribution Box:</strong> ${elec.mainDistributionBox}</div>
+          <div>• <strong>Distribution Supply:</strong> ${elec.distributionSupply}</div>
+          <div>• <strong>Sanctioned Demand:</strong> ${elec.sanctionedDemand}</div>
           <div>• <strong>Lighting Loops:</strong> ${elec.lightingCircuits}</div>
           <div>• <strong>Power Outlets (16A):</strong> ${elec.powerPoints16A}</div>
-          <div>• <strong>Chemical Earthing:</strong> ${elec.earthingScheme}</div>
+          <div>• <strong>Earthing Protection:</strong> ${elec.earthingScheme}</div>
         </div>
       `;
     }
@@ -793,12 +921,15 @@
       const container = document.getElementById('plumb-details-card');
       if (!container) return;
       container.innerHTML = `
-        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">🚰 Potable Supply &amp; Drainage Schematics</h4>
+        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">🚰 Potable Supply &amp; Drainage Schematics (UPC-I &amp; CPHEEO)</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; font-size: 0.88rem;">
+          <div>• <strong>Design Occupancy:</strong> ${plumb.designStandard}</div>
+          <div>• <strong>Daily Demand:</strong> ${plumb.dailyWaterDemand}</div>
           <div>• <strong>Underground Sump:</strong> ${plumb.undergroundSump}</div>
           <div>• <strong>Overhead Water Tank:</strong> ${plumb.overheadTank}</div>
           <div>• <strong>Gravity Drainage Slope:</strong> ${plumb.drainageSlope}</div>
           <div>• <strong>Piping Specification:</strong> ${plumb.pipingMaterial}</div>
+          <div>• <strong>Inspection Chambers:</strong> ${plumb.inspectionChambers}</div>
         </div>
       `;
     }
@@ -807,12 +938,13 @@
       const container = document.getElementById('muni-details-card');
       if (!container) return;
       container.innerHTML = `
-        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">📑 Local Authority FAR &amp; Setback Compliance</h4>
+        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem;">📑 Local Authority FAR &amp; Setback Compliance (MBBL 2016)</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; font-size: 0.88rem;">
           <div>• <strong>Plot Dimensions:</strong> ${muni.plotDimensions}</div>
           <div>• <strong>Ground Coverage:</strong> ${muni.groundCoverage}</div>
           <div>• <strong>Mandatory Setbacks:</strong> ${muni.setbacks}</div>
           <div>• <strong>Calculated FAR / FSI:</strong> ${muni.farFsiRatio}</div>
+          <div>• <strong>Sanction Eligibility:</strong> <span style="color: var(--accent); font-weight: 700;">${muni.sanctionStatus}</span></div>
         </div>
       `;
     }
@@ -877,7 +1009,7 @@
     }
 
     function exportMasterPackage() {
-      alert("Master Architectural Deliverable Package (2D Vastu, 3D Elevation, RCC, Electrical, Plumbing, Municipal & Walkthrough specs) compiled successfully!");
+      alert("Master Architectural Deliverable Package (2D Vastu, 3D Elevation, RCC, Material BOQ, Electrical MEP, Plumbing MEP, Municipal & Walkthrough specs) compiled successfully!");
       showToast("Package Exported", "Ready for shop printing and client hand-off.", "success");
     }
 

@@ -1,80 +1,73 @@
-# 🏗️ Guru Construction: Internal Admin Operations Console
+# 🏗️ Guru Construction: Centralized Architectural Management Console
 
-> Enterprise architectural management system engineered exclusively for internal shop staff and administrators. Replaces manual client logins and uploads with rule-based generative synthesis, parametric text prompts, and automated cross-category deliverable synchronization.
-
----
-
-## 🌟 Key Architecture & Operational Updates
-
-1. **Strictly Admin-Only Access:**
-   - Removed all client logins, registrations, and client-facing interfaces.
-   - The entire platform is now consolidated inside `index.html` as a dedicated **Internal Admin Operations Console**.
-
-2. **Primary Entry Point (Client Details & Project Scope Banner):**
-   - Positioned prominently at the very top of the dashboard upon loading.
-   - Real-time display of active client name, contact details, plot dimensions, square footage, floor counts, room counts, cardinal Vastu facing, and commercial clearance status.
-   - Includes an instant project switcher to swap between client files on the fly.
-
-3. **Collapsible Left-Side Hamburger Menu:**
-   - Streamlines category management by moving all 8 core deliverables out of dropdowns into a modern sidebar:
-     1. **2D Vastu Planning**
-     2. **3D Elevation Design**
-     3. **3D Floor Plans**
-     4. **RCC Structural Drawings**
-     5. **Electrical Layouts**
-     6. **Plumbing Layouts**
-     7. **Municipal Blueprint Approvals**
-     8. **3D Walkthrough Video**
-   - Toggles smoothly between expanded and high-density icon mode via the top hamburger button (`☰`).
-
-4. **Built-in Parametric Prompt Bar & Internal Architectural Database:**
-   - Replaced manual file uploads with natural language prompt input (e.g., *"40x60 plot, 2 floors, 3BHK East facing with pooja room in Ishanya corner"*).
-   - Powered by [arch-database.js](file:///c:/Users/Lenovo%20523/Desktop/constection/js/arch-database.js), encoding Vastu Purusha Mandala quadrant rules and structural engineering standards.
-   - Automatically processes dimensions, floors, and notes to generate **two distinct Vastu-compliant 2D options**:
-     - **Option A:** Classic Brahmasthan Vastu Courtyard Layout (98% compliance).
-     - **Option B:** Contemporary Dynamic Split-Zone Layout (94% compliance).
-
-5. **Cross-Category Propagation & 3D Synchronization:**
-   - Selecting a preferred 2D option immediately locks its structural coordinates and automatically synthesizes:
-     - Synced **3D Elevation Design** rendered in Three.js WebGL with 360° orbital controls.
-     - **3D Floor Plans** with isometric material specifications.
-     - **RCC Structural Schedules** (columns, Fe500D rebar quantities, concrete grade, cement bags).
-     - **Electrical Layouts** (distribution boards, lighting loops, earthing).
-     - **Plumbing Layouts** (NE underground water sump, SW overhead tank, drainage).
-     - **Municipal Blueprint Approvals** (plot coverage, setbacks, FAR/FSI ratio).
-     - **3D Walkthrough Video** flight paths and keyframe routes.
-
-6. **Integrated Manual Correction Interface:**
-   - Allows admins to fine-tune any specific parameter (e.g. wall thickness, balcony depth, column span) and seamlessly synchronize revisions across all downstream deliverables.
+> Enterprise architectural synthesis and engineering platform. Features a prompt-driven iterative design engine, direct 3D WebGL synchronization, and real-time parameter verification against authoritative industry regulatory standards (NBC 2016, IS 456, IS 13920, CEA, UPC-I, and Vedic Vastu Mandalas).
 
 ---
 
-## 📂 File Directory
+## 🌟 Key Architecture & Platform Overhaul
+
+1. **Collapsible Responsive Sidebar & Centralized Management Dashboard:**
+   - Replaced fragmented administrative desks with an uncluttered, unified **Centralized Management Dashboard** in [index.html](file:///c:/Users/Lenovo%20523/Desktop/github11/conc/index.html).
+   - Completely eliminated the Staff Admin clutter and redundant legacy operational portals.
+   - Smoothly collapsible sidebar (`☰`) toggles between detailed navigation and high-density icon mode with automatic mobile-responsive off-canvas drawer support.
+
+2. **Prompt-Driven 2D Synthesis & Iterative Edits Engine:**
+   - Upgraded the 2D planning module into an intelligent, prompt-driven synthesis engine ([pipeline-engine.js](file:///c:/Users/Lenovo%20523/Desktop/github11/conc/js/pipeline-engine.js)).
+   - Supports natural language plot definitions (e.g., *"40x60 plot, 2 floors, 3BHK East facing with pooja room in Ishanya corner"*).
+   - **Iterative prompt editing**: Directly accept refinement instructions (e.g. *"Expand master suite and shift kitchen strictly to South-East Agneya"*) and immediately re-synthesizes the structural footprint without manual redrawing.
+
+3. **Dynamic External Regulatory Standards Verification:**
+   - Sourced and verified all structural, architectural, and Vastu standards dynamically via [arch-database.js](file:///c:/Users/Lenovo%20523/Desktop/github11/conc/js/arch-database.js) against authoritative industry standards before generation occurs:
+     - **NBC 2016 (National Building Code of India):** Setbacks, coverage, daylight, and life safety.
+     - **IS 456:2000 & IS 13920:2016:** Limit state concrete design, ductile rebar detailing, and seismic confinement.
+     - **Vastu Purusha Mandala (Brihat Samhita & Manasara):** 81-Pada cardinal energy grid alignment.
+     - **Central Electricity Authority (CEA) & IS 732:2019:** Load balancing, diversity factor, dual earthing.
+     - **Uniform Plumbing Code - India (UPC-I) & CPHEEO:** 135 LPCD potable water demand and drainage gradients.
+     - **Model Building Bye-Laws (MBBL 2016):** Permissible FAR/FSI and ground coverage ratios.
+
+4. **Dynamic 3D WebGL Model Synchronization:**
+   - Synchronizes every 2D structural edit and story adjustment in real time with a fully realized Three.js WebGL model ([admin-studio-3d.js](file:///c:/Users/Lenovo%20523/Desktop/github11/conc/js/admin-studio-3d.js)).
+   - Features 360° orbital controls, plinth foundation detailing, architectural wooden louvers, cantilevered glass balconies, rooftop pergolas, and Vastu water tanks.
+
+5. **Integrated Downstream Deliverables Package:**
+   - **RCC Structural Drawings & Schedules:** Column sizing, Fe500D rebar matrices, and seismic stirrups.
+   - **Material Estimations (Civil BOQ):** Automated takeoff for concrete ($m^3$), cement bags, TMT steel tonnage, M-Sand, coarse aggregates, and bricks per BIS SP:27 handbook.
+   - **MEP Layouts (Electrical & Plumbing):** Connected electrical load, 3-phase/single-phase demand, underground sumps, overhead tanks, and sanitary lines.
+   - **Municipal Blueprint Sanction Sheets:** Coverage percentages, setbacks, and FAR calculation.
+   - **3D Cinematic Walkthrough Keyframes:** Camera flight trajectories and render specifications.
+
+---
+
+## 📁 Project Structure
 
 ```
-c:\Users\Lenovo 523\Desktop\constection\
+c:\Users\Lenovo 523\Desktop\github11\conc\
 │
-├── index.html                  # Internal Admin Console & Integrated Operations Workspace
-├── README.md                   # Operations Guide
+├── index.html                  # Centralized Management Dashboard & Operations Workspace
+├── client-portal.html          # Clean Client View & Inspection Portal
+├── README.md                   # System Architecture & Compliance Guide
 │
 ├── css/
-│   └── admin-style.css         # Clean, responsive high-density admin theme
+│   ├── admin-style.css         # Responsive dashboard styling & collapsible sidebar
+│   └── style.css               # Core base stylesheet
 │
 ├── js/
-│   ├── arch-database.js        # Internal Architectural & Vastu Purusha Mandala knowledge base
-│   ├── pipeline-engine.js      # Parametric text parser & cross-category synthesis engine
-│   └── admin-studio-3d.js      # Three.js procedural 3D elevation renderer synced to 2D
+│   ├── arch-database.js        # Authoritative Industry Standards & Regulatory Verification Hub
+│   ├── pipeline-engine.js      # Prompt-driven iterative synthesis & cross-category pipeline
+│   ├── admin-studio-3d.js      # Synced Three.js 3D WebGL elevation studio
+│   ├── quotation-engine.js     # Commercial quotation engine
+│   └── firebase-config.js      # Cloud synchronization & data persistence layer
 │
 └── assets/
-    └── images/
-        └── sample-blueprint-clean.svg # Architectural reference drawing
+    └── images/                 # Architectural SVG blueprints & elevation drawings
 ```
 
 ---
 
-## 🚀 Instant Launch in Visual Studio Code
+## 🚀 How to Run & Verify
 
-1. Open `c:\Users\Lenovo 523\Desktop\constection` in **VS Code**.
-2. Right-click on [index.html](file:///c:/Users/Lenovo%20523/Desktop/constection/index.html) and select **"Open with Live Server"**.
-3. Use the **Parametric Prompt Bar** to type custom plot specs or click quick tag presets.
-4. Compare **Option A** vs. **Option B**, select your master plan, and toggle through the left sidebar to inspect all 8 synchronized deliverables!
+1. Open [index.html](file:///c:/Users/Lenovo%20523/Desktop/github11/conc/index.html) in your browser (or use VS Code Live Server).
+2. Observe the **uncluttered Centralized Management Dashboard** with the responsive collapsible sidebar (`☰`).
+3. View the **Live Industry Standards Telemetry Bar** verifying compliance against NBC 2016, IS 456, IS 13920, CEA, and UPC-I.
+4. Input a prompt into the **Parametric Architectural Prompt Bar** or click a quick-action tag to synthesize verified 2D layout options.
+5. Select a layout and switch categories in the sidebar to review synchronized **3D WebGL Models**, **RCC Structural Schedules**, **Civil BOQ Material Estimations**, **Electrical Layouts**, and **Plumbing Layouts**.

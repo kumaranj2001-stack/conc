@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Guru Construction - Admin Operations Console Stylesheet
-   Tailored for Shop Counters, Desktop Terminals & High-Density Admin Controls
+   Guru Construction - Centralized Management Dashboard Stylesheet
+   Fully responsive with collapsible sidebar, high-density telemetry, and verified deliverables
    ========================================================================== */
 
 :root {
@@ -36,7 +36,7 @@
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-full: 9999px;
-  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *, *::before, *::after {
@@ -56,7 +56,7 @@ body {
   flex-direction: column;
 }
 
-/* App Header */
+/* Centralized Top Navigation Bar */
 .admin-navbar {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
@@ -110,9 +110,9 @@ body {
   position: relative;
 }
 
-/* Collapsible Left-Side Hamburger Menu */
+/* Collapsible Left Sidebar */
 .admin-sidebar {
-  width: 280px;
+  width: 290px;
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
   display: flex;
@@ -146,7 +146,8 @@ body {
 
 .admin-sidebar.collapsed .sidebar-title,
 .admin-sidebar.collapsed .cat-name,
-.admin-sidebar.collapsed .cat-status {
+.admin-sidebar.collapsed .cat-status,
+.admin-sidebar.collapsed .sidebar-badge-count {
   display: none;
 }
 
@@ -155,7 +156,7 @@ body {
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   flex: 1;
   overflow-y: auto;
 }
@@ -183,84 +184,78 @@ body {
   background: var(--primary);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.4);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.35);
 }
 
 .cat-icon {
   font-size: 1.25rem;
-  min-width: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 28px;
+  text-align: center;
 }
 
 .cat-details {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  line-height: 1.2;
 }
 
 .cat-name {
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .cat-status {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #94a3b8;
-  margin-top: 2px;
+  white-space: nowrap;
 }
 
 .cat-item.active .cat-status {
-  color: #93c5fd;
+  color: #bfdbfe;
 }
 
-/* Main Content Area */
+/* Central Workspace */
 .admin-main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-  max-width: 100%;
-  overflow-x: hidden;
+  padding: 1.75rem;
+  overflow-y: auto;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Primary Entry Point: Client Details & Project Scope Banner */
+/* Project Scope & Verification Banner */
 .project-scope-banner {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 
 .scope-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .scope-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.25rem;
-  background: var(--bg-subtle);
-  padding: 1.25rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
 }
 
 .scope-field-label {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--text-muted);
   font-weight: 700;
   margin-bottom: 2px;
@@ -269,16 +264,56 @@ body {
 .scope-field-value {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text-main);
 }
 
-/* Built-In Parametric Prompt Bar */
+/* External Standards Verification Telemetry Bar */
+.standards-telemetry-bar {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.standards-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.std-chip {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.std-chip.verified {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+
+/* Prompt Bar */
 .parametric-prompt-bar {
   background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  color: #fff;
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  color: #ffffff;
   box-shadow: var(--shadow-md);
 }
 
@@ -287,8 +322,10 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.75rem;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .prompt-input-row {
@@ -300,31 +337,25 @@ body {
   flex: 1;
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-size: 1rem;
-  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  color: var(--text-main);
   transition: var(--transition);
-}
-
-.prompt-input::placeholder {
-  color: rgba(255, 255, 255, 0.55);
 }
 
 .prompt-input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.18);
   border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.3);
+  background: #ffffff;
 }
 
 .btn-generate {
   background: var(--secondary);
-  color: #ffffff;
+  color: #fff;
   border: none;
-  padding: 0 1.75rem;
   border-radius: var(--radius-md);
+  padding: 0 1.75rem;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
@@ -340,7 +371,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* Card & Content Panels */
+/* Cards & Grid Layouts */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -357,90 +388,84 @@ body {
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
 }
 
-/* 2-Option 2D Comparison Layout */
+/* 2D Options Comparison Grid */
 .options-comparison-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .option-card {
   border: 2px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: 1.25rem;
-  background: var(--bg-card);
-  transition: var(--transition);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.option-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
 .option-card.selected {
   border-color: var(--accent);
-  background: #f0fdf4;
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+  background: var(--accent-light);
 }
 
 .option-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 0.75rem;
 }
 
 .option-canvas {
   width: 100%;
-  height: 260px;
+  height: 240px;
   background: #0f172a;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   margin-bottom: 1rem;
 }
 
-/* Badges & Buttons */
+/* Badges */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-full);
+  padding: 0.25rem 0.65rem;
   font-size: 0.75rem;
   font-weight: 700;
-  text-transform: uppercase;
+  border-radius: var(--radius-full);
 }
+
 .badge-primary { background: var(--primary-light); color: var(--primary); }
-.badge-warning { background: var(--warning-light); color: var(--secondary-hover); }
 .badge-success { background: var(--accent-light); color: var(--accent); }
+.badge-warning { background: var(--warning-light); color: var(--secondary); }
 .badge-danger { background: var(--danger-light); color: var(--danger); }
 
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 0.6rem 1.25rem;
+  gap: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
   font-weight: 600;
   border-radius: var(--radius-md);
-  border: 1px solid transparent;
   cursor: pointer;
+  border: none;
   transition: var(--transition);
-  font-size: 0.92rem;
+  text-decoration: none;
 }
 
 .btn-primary { background: var(--primary); color: #fff; }
@@ -518,16 +543,7 @@ body {
 
 .modal-body { padding: 1.5rem; }
 
-.modal-footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  background: var(--bg-subtle);
-}
-
-/* Toast */
+/* Toast Notifications */
 #toast-container {
   position: fixed;
   bottom: 24px;
@@ -542,7 +558,7 @@ body {
 .toast {
   pointer-events: auto;
   min-width: 280px;
-  max-width: 380px;
+  max-width: 400px;
   background: #fff;
   border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
@@ -553,14 +569,24 @@ body {
   gap: 12px;
 }
 .toast-success { border-left-color: var(--accent); }
-.toast-warning { border-left-color: var(--warning); }
+.toast-warning { border-left-color: var(--secondary); }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
+/* Responsive Media Queries */
+@media (max-width: 960px) {
   .options-comparison-grid {
     grid-template-columns: 1fr;
   }
   .prompt-input-row {
     flex-direction: column;
+  }
+  .admin-sidebar {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .admin-sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 280px;
   }
 }

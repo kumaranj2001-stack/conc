@@ -27,7 +27,7 @@
           👤 <span id="client-name-display">Vikram Rathore</span>
         </div>
         <a href="index.html" class="btn btn-outline btn-sm">Home</a>
-        <a href="admin.html" class="btn btn-secondary btn-sm">Admin Switch 🔑</a>
+        <a href="index.html" class="btn btn-secondary btn-sm">Management Console 🔑</a>
       </div>
     </div>
   </header>
@@ -160,7 +160,7 @@
         <!-- Revision History & Audit Trail -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">🕒 Revision Log &amp; Staff Collaboration</h3>
+            <h3 class="card-title">🕒 Revision Log &amp; Architectural Collaboration</h3>
             <span class="badge badge-primary">Audit Trail</span>
           </div>
           <div id="revision-history-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto;">
@@ -297,7 +297,7 @@
       }
 
       if (!currentProject.deliverables || currentProject.deliverables.length === 0) {
-        list.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">No deliverables uploaded yet by shop staff.</div>`;
+        list.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">No deliverables published yet to client vault.</div>`;
         return;
       }
 
@@ -399,7 +399,7 @@
       window.guruStore.addNotification(
         "Client Revision Request",
         `${currentProject.clientName} submitted a revision request for ${target} on ${currentProject.id}.`,
-        "staff"
+        "architect"
       );
 
       document.getElementById('rev-notes').value = "";
