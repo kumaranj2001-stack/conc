@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guru Construction | Premier Architectural & Construction Management Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Three.js CDN (Free WebGL library) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-badge">🏗️</div>
+        <div>
+          <span>Guru Construction</span>
+          <span class="brand-tag">Architectural &amp; Engineering Portal</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#calculator" class="nav-link">Instant Quotation</a></li>
+        <li><a href="#studio" class="nav-link">2D &amp; 3D Studio</a></li>
+        <li><a href="#tracking" class="nav-link">Live Project Tracking</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="client-portal.html" class="btn btn-outline btn-sm">Client Portal</a>
+        <a href="admin.html" class="btn btn-primary btn-sm">Staff Login 🔐</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section style="background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); padding: 4.5rem 0 3.5rem; border-bottom: 1px solid var(--border);">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center;">
+      <div>
+        <div class="badge badge-warning" style="margin-bottom: 1rem; font-size: 0.85rem;">
+          ⚡ Certified Vastu Shastra &amp; Structural Engineering
+        </div>
+        <h1 style="font-size: 2.75rem; font-weight: 800; line-height: 1.2; color: var(--primary); margin-bottom: 1.2rem;">
+          Engineering Your Dream Spaces with Precision &amp; Transparency.
+        </h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">
+          Shop-tailored construction operations portal bridging 2D Vastu floor plans, photorealistic 3D elevations, instant quotations, and payment-gated digital vault delivery.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#calculator" class="btn btn-primary btn-lg">Calculate Instant Quote →</a>
+          <a href="#studio" class="btn btn-outline btn-lg">Launch 2D/3D Studio 🎨</a>
+        </div>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">1,450+</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Blueprints Delivered</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">100%</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Vastu Compliance</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent);">Zero-Cost</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Spark Tier Hosting</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Interactive 3D Preview Widget -->
+      <div class="card" style="padding: 1rem; background: #0f172a; border-color: #334155;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; color: #94a3b8; font-size: 0.85rem;">
+          <span>🌐 Interactive WebGL 3D Preview (Drag to Orbit)</span>
+          <span class="badge badge-primary">Live Three.js</span>
+        </div>
+        <div id="hero-3d-canvas" style="width: 100%; height: 360px; border-radius: 8px; overflow: hidden; position: relative;">
+          <!-- Three.js Canvas injected here -->
+        </div>
+        <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+          <small style="color: #94a3b8;">Rotate, zoom &amp; inspect building structural form</small>
+          <a href="#studio" class="btn btn-secondary btn-sm">Full Studio Controls</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Architectural & Engineering Services Grid -->
+  <section id="services" style="padding: 4.5rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 3.5rem;">
+        <span class="badge badge-primary" style="margin-bottom: 0.5rem;">End-to-End Capabilities</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">Complete Architectural &amp; Engineering Deliverables</h2>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">
+          From hand-sketched conceptual drafts to approved structural drawings and cinema walkthroughs, every deliverable is prepared with rigorous quality checks.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;" id="services-container">
+        <!-- Rendered dynamically from GURU_SERVICES -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Requirements Builder & Instant Cost Quotation Engine -->
+  <section id="calculator" style="background: var(--bg-subtle); padding: 4.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
+        <span class="badge badge-warning">Transparent Pricing</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">Instant Quotation &amp; Project Requirements Builder</h2>
+        <p style="color: var(--text-muted);">
+          Input your plot parameters, select custom services, and see dynamic cost computations in real time.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;">
+        <!-- Left: Input Parameters -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">1. Configure Plot &amp; Scope</h3>
+            <span class="badge badge-primary">Step 1</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Plot Length (Feet)</label>
+              <input type="number" id="calc-length" class="form-control" value="50" min="10" max="250">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Plot Width (Feet)</label>
+              <input type="number" id="calc-width" class="form-control" value="40" min="10" max="250">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Total Floor Levels (G + N)</label>
+              <select id="calc-floors" class="form-control form-select">
+                <option value="1">Ground Floor (G)</option>
+                <option value="2" selected>G + 1 (Duplex)</option>
+                <option value="3">G + 2 (Triplex / Commercial)</option>
+                <option value="4">G + 3 (Multi-Storey)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">3D Walkthrough Video (Mins)</label>
+              <input type="number" id="calc-walkthrough" class="form-control" value="2" min="1" max="10">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 0.5rem; background: var(--bg-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600;">
+              <input type="checkbox" id="calc-vastu" checked style="width: 18px; height: 18px; accent-color: var(--secondary);">
+              Include Traditional Vastu Shastra Energy Alignment Audit (+₹3,500)
+            </label>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <label class="form-label" style="font-weight: 700; margin-bottom: 0.75rem;">Select Required Engineering Deliverables:</label>
+            <div id="service-checkboxes" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; max-height: 240px; overflow-y: auto; padding-right: 5px;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Real-Time Dynamic Estimate Breakdown -->
+        <div class="card" style="border: 2px solid var(--primary); display: flex; flex-direction: column;">
+          <div class="card-header" style="background: var(--primary-light); margin: -1.5rem -1.5rem 1.25rem; padding: 1.25rem 1.5rem; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg);">
+            <h3 class="card-title" style="color: var(--primary);">2. Transparent Quotation Summary</h3>
+            <span class="badge badge-success">Live Computation</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border);">
+            <span style="color: var(--text-muted);">Calculated Plot Area:</span>
+            <strong id="summary-plot-area">2,000 sq.ft</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border);">
+            <span style="color: var(--text-muted);">Total Built-up Area:</span>
+            <strong id="summary-builtup-area">4,000 sq.ft (2 Floors)</strong>
+          </div>
+
+          <div style="flex: 1;">
+            <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem;">Itemized Breakdown:</div>
+            <div id="itemized-breakdown-list" style="max-height: 200px; overflow-y: auto; padding-right: 5px; font-size: 0.9rem;">
+              <!-- Itemized line items populated by JS -->
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span style="color: var(--text-muted);">Subtotal:</span>
+              <strong id="summary-subtotal">₹0</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: var(--text-muted);">GST &amp; Professional Architectural Taxes (18%):</span>
+              <span id="summary-tax">₹0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 2px solid var(--border-strong); padding-top: 10px; font-size: 1.35rem; color: var(--primary);">
+              <strong>Estimated Grand Total:</strong>
+              <strong id="summary-grand-total">₹0</strong>
+            </div>
+          </div>
+
+          <button id="btn-initiate-order" class="btn btn-primary btn-lg" style="margin-top: 1.25rem; width: 100%;">
+            Initiate Project Order with this Scope →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart 2D & 3D Interactive Design Studio Section -->
+  <section id="studio" style="padding: 4.5rem 0;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-primary">Native Browser CAD</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">Integrated 2D Vastu &amp; 3D Elevation Studio</h2>
+          <p style="color: var(--text-muted);">Interactively draft floor plans with traditional Vastu zones and inspect 3D elevations in real time.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button id="tab-btn-2d" class="btn btn-primary" onclick="switchStudioTab('2d')">2D Floor &amp; Vastu Planner</button>
+          <button id="tab-btn-3d" class="btn btn-outline" onclick="switchStudioTab('3d')">3D Elevation &amp; Materials</button>
+        </div>
+      </div>
+
+      <!-- Studio 2D Viewport -->
+      <div id="studio-pane-2d" class="card" style="padding: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <label class="form-label" style="margin: 0;">Add Room:</label>
+            <select id="select-room-type" class="form-control" style="width: auto;">
+              <option value="Living Room">Living Room (Hall)</option>
+              <option value="Master Bedroom">Master Bedroom</option>
+              <option value="Kitchen">Kitchen</option>
+              <option value="Pooja Room">Pooja Room</option>
+              <option value="Bathroom/Toilet">Bathroom / Toilet</option>
+              <option value="Balcony/Verandah">Balcony / Verandah</option>
+            </select>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">(Click &amp; drag on canvas to place room)</span>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline btn-sm" onclick="planner2D.toggleVastu()">Toggle Vastu Mandala Grid</button>
+            <button class="btn btn-outline btn-sm" onclick="planner2D.clearCanvas()">Clear Canvas</button>
+            <button class="btn btn-success btn-sm" onclick="downloadCanvasPlan()">Export 2D Plan</button>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #0f172a; border-radius: var(--radius-md); overflow: hidden;">
+          <canvas id="canvas-2d-planner" style="display: block; width: 100%; cursor: crosshair;"></canvas>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+          <span>Scale: 1 Grid Square = 5ft x 5ft (25 sq.ft)</span>
+          <span style="color: #b45309; font-weight: 600;">Traditional Vastu Purusha Mandala Zones Active</span>
+        </div>
+      </div>
+
+      <!-- Studio 3D Viewport -->
+      <div id="studio-pane-3d" class="card" style="padding: 1.25rem; display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <div>
+              <label class="form-label" style="margin: 0; font-size: 0.85rem;">Floors:</label>
+              <select id="studio-3d-floors" class="form-control" style="width: 80px;" onchange="mainStudio3D.setFloors(this.value)">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" style="margin: 0; font-size: 0.85rem;">Material Theme:</label>
+              <select id="studio-3d-material" class="form-control" style="width: auto;" onchange="mainStudio3D.setMaterialTheme(this.value)">
+                <option value="luxury">Modern Luxury (Timber &amp; White)</option>
+                <option value="minimalist">Minimalist (Graphite Stone)</option>
+                <option value="terracotta">Warm Terracotta Clay</option>
+              </select>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="mainStudio3D.toggleWireframe()">Toggle Structural Wireframe</button>
+          </div>
+
+          <!-- AI-Sketch Assisted Section -->
+          <div style="display: flex; align-items: center; gap: 8px; background: var(--bg-subtle); padding: 4px 10px; border-radius: var(--radius-md);">
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">🤖 AI Sketch-to-3D:</span>
+            <input type="file" id="sketch-upload" accept="image/*" style="display: none;" onchange="handleSketchUploaded(this)">
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('sketch-upload').click()">Upload Rough Sketch</button>
+          </div>
+        </div>
+
+        <div id="main-3d-canvas" style="width: 100%; height: 500px; background: #0f172a; border-radius: var(--radius-md); overflow: hidden;"></div>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+          <span>Controls: Left-Click + Drag to Orbit • Scroll to Zoom</span>
+          <span>GPU WebGL Accelerated Procedural Generation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Project Tracking & Demonstration Dashboard -->
+  <section id="tracking" style="background: var(--bg-subtle); padding: 4.5rem 0; border-top: 1px solid var(--border);">
+    <div class="container">
+      <div style="text-align: center; max-width: 750px; margin: 0 auto 3rem;">
+        <span class="badge badge-success">Milestone Transparency</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">Live Project Milestone Tracking</h2>
+        <p style="color: var(--text-muted);">
+          Track sample active client projects moving through our 5-stage structural engineering and Vastu compliance pipeline.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;" id="live-tracking-cards">
+        <!-- Rendered dynamically from window.guruStore.getProjects() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Initiation Modal -->
+  <div id="order-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-head">
+        <h3 class="card-title">🚀 Confirm &amp; Submit Project Order</h3>
+        <button onclick="closeOrderModal()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="order-form">
+          <div class="form-group">
+            <label class="form-label">Client Full Name *</label>
+            <input type="text" id="order-client-name" class="form-control" placeholder="e.g. Ramesh Patel" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" id="order-client-email" class="form-control" placeholder="client@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone / WhatsApp Number *</label>
+              <input type="tel" id="order-client-phone" class="form-control" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Title / Location Summary</label>
+            <input type="text" id="order-project-title" class="form-control" placeholder="e.g. 3BHK Residential Bungalow, Plot 42" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Specific Vastu / Architectural Instructions (Optional)</label>
+            <textarea id="order-notes" class="form-control" rows="3" placeholder="e.g., East facing main entrance required, open courtyard in center, pooja room strictly in Ishanya corner."></textarea>
+          </div>
+
+          <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="font-weight: 600;">Total Order Value:</span>
+              <strong id="modal-order-total" style="color: var(--primary); font-size: 1.15rem;">₹0</strong>
+            </div>
+            <small style="color: var(--text-muted); display: block; margin-top: 4px;">Initial advance token payment can be coordinated with the shop desk.</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeOrderModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="submitProjectOrder()">Submit Order &amp; Open Client Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+      <div>
+        <div style="font-weight: 800; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; gap: 6px;">
+          🏗️ Guru Construction Portal
+        </div>
+        <div style="font-size: 0.82rem; margin-top: 4px;">
+          Clean, Light-Colored Responsive Architecture Management Engine • Free Spark Tier Stack
+        </div>
+      </div>
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="client-portal.html">Client Dashboard</a>
+        <a href="admin.html">Staff CAD Portal</a>
+        <a href="#calculator">Quotation Engine</a>
+      </div>
+      <div style="font-size: 0.8rem; color: var(--text-light);">
+        &copy; 2026 Guru Construction. Visual Studio Code &amp; Firebase Spark Ready.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/quotation-engine.js"></script>
+  <script src="js/studio-2d.js"></script>
+  <script src="js/studio-3d.js"></script>
+  <script>
+    // Global Studio Instances
+    let hero3D = null;
+    let mainStudio3D = null;
+    let planner2D = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Populate Services Grid
+      renderServicesGrid();
+
+      // 2. Populate Quotation Service Checkboxes
+      renderQuotationCheckboxes();
+
+      // 3. Attach Quotation Event Listeners
+      setupQuotationEngine();
+
+      // 4. Initialize Hero 3D Preview
+      setTimeout(() => {
+        hero3D = new GuruStudio3D('hero-3d-canvas');
+        planner2D = new GuruFloorPlanner2D('canvas-2d-planner');
+      }, 200);
+
+      // 5. Render Tracking Cards
+      renderTrackingCards();
+
+      // 2D Room Selection Handler
+      const selectRoom = document.getElementById('select-room-type');
+      if (selectRoom) {
+        selectRoom.addEventListener('change', (e) => {
+          if (planner2D) planner2D.selectedRoomType = e.target.value;
+        });
+      }
+    });
+
+    function renderServicesGrid() {
+      const container = document.getElementById('services-container');
+      if (!container) return;
+
+      container.innerHTML = GuruQuotationEngine.services.map(s => `
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+              <span class="badge badge-primary">Technical</span>
+              <strong style="color: var(--secondary); font-size: 0.9rem;">From ₹${s.baseMin.toLocaleString('en-IN')}</strong>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">${s.name}</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">${s.desc}</p>
+          </div>
+          <div style="margin-top: 1.2rem; padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+            <small style="color: var(--text-light); font-weight: 600;">
+              ${s.ratePerSqFt ? `₹${s.ratePerSqFt}/sq.ft` : `₹${s.ratePerMinute}/min`}
+            </small>
+            <button class="btn btn-outline btn-sm" onclick="selectServiceAndScroll('${s.id}')">Select Service</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderQuotationCheckboxes() {
+      const box = document.getElementById('service-checkboxes');
+      if (!box) return;
+
+      // Default select first 4 core services
+      const defaultSelected = ['srv-2d', 'srv-3d-elev', 'srv-rcc', 'srv-walkthrough'];
+
+      box.innerHTML = GuruQuotationEngine.services.map(s => {
+        const isChecked = defaultSelected.includes(s.id) ? 'checked' : '';
+        return `
+          <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.88rem; cursor: pointer;">
+            <input type="checkbox" value="${s.id}" class="srv-chk" ${isChecked} style="margin-top: 3px; accent-color: var(--primary);">
+            <span>${s.name}</span>
+          </label>
+        `;
+      }).join('');
+    }
+
+    function setupQuotationEngine() {
+      const inputs = ['calc-length', 'calc-width', 'calc-floors', 'calc-walkthrough', 'calc-vastu'];
+      inputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateQuote);
+      });
+
+      document.querySelectorAll('.srv-chk').forEach(chk => {
+        chk.addEventListener('change', updateQuote);
+      });
+
+      // Initial quote calculation
+      updateQuote();
+
+      // Initiate order button
+      const btnOrder = document.getElementById('btn-initiate-order');
+      if (btnOrder) {
+        btnOrder.addEventListener('click', openOrderModal);
+      }
+    }
+
+    let currentEstimate = null;
+
+    function updateQuote() {
+      const length = parseFloat(document.getElementById('calc-length')?.value || 50);
+      const width = parseFloat(document.getElementById('calc-width')?.value || 40);
+      const floors = parseInt(document.getElementById('calc-floors')?.value || 2);
+      const walkthrough = parseInt(document.getElementById('calc-walkthrough')?.value || 2);
+      const vastu = document.getElementById('calc-vastu')?.checked;
+
+      const selectedIds = Array.from(document.querySelectorAll('.srv-chk:checked')).map(el => el.value);
+
+      currentEstimate = GuruQuotationEngine.calculateEstimate({
+        plotLength: length,
+        plotWidth: width,
+        totalFloors: floors,
+        walkthroughMinutes: walkthrough,
+        selectedServiceIds: selectedIds,
+        vastuConsultation: vastu
+      });
+
+      // Update DOM
+      document.getElementById('summary-plot-area').textContent = `${currentEstimate.plotArea.toLocaleString('en-IN')} sq.ft`;
+      document.getElementById('summary-builtup-area').textContent = `${currentEstimate.totalBuiltUpArea.toLocaleString('en-IN')} sq.ft (${floors} Floor${floors > 1 ? 's' : ''})`;
+
+      const list = document.getElementById('itemized-breakdown-list');
+      if (list) {
+        if (currentEstimate.itemized.length === 0) {
+          list.innerHTML = `<div style="color: var(--text-light); font-style: italic; padding: 10px 0;">No services selected yet. Please check one or more services on the left.</div>`;
+        } else {
+          list.innerHTML = currentEstimate.itemized.map(it => `
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px dotted var(--border);">
+              <div>
+                <strong style="color: var(--text-main);">${it.name}</strong>
+                <div style="font-size: 0.76rem; color: var(--text-light);">${it.note}</div>
+              </div>
+              <strong style="color: var(--primary); margin-left: 10px;">₹${it.cost.toLocaleString('en-IN')}</strong>
+            </div>
+          `).join('');
+        }
+      }
+
+      document.getElementById('summary-subtotal').textContent = `₹${currentEstimate.subtotal.toLocaleString('en-IN')}`;
+      document.getElementById('summary-tax').textContent = `₹${currentEstimate.tax.toLocaleString('en-IN')}`;
+      document.getElementById('summary-grand-total').textContent = `₹${currentEstimate.grandTotal.toLocaleString('en-IN')}`;
+    }
+
+    function selectServiceAndScroll(srvId) {
+      const chk = document.querySelector(`.srv-chk[value="${srvId}"]`);
+      if (chk) chk.checked = true;
+      updateQuote();
+      document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function switchStudioTab(tab) {
+      const pane2d = document.getElementById('studio-pane-2d');
+      const pane3d = document.getElementById('studio-pane-3d');
+      const btn2d = document.getElementById('tab-btn-2d');
+      const btn3d = document.getElementById('tab-btn-3d');
+
+      if (tab === '2d') {
+        pane2d.style.display = 'block';
+        pane3d.style.display = 'none';
+        btn2d.className = 'btn btn-primary';
+        btn3d.className = 'btn btn-outline';
+        if (planner2D) planner2D.resizeCanvas();
+      } else {
+        pane2d.style.display = 'none';
+        pane3d.style.display = 'block';
+        btn2d.className = 'btn btn-outline';
+        btn3d.className = 'btn btn-primary';
+
+        if (!mainStudio3D) {
+          setTimeout(() => {
+            mainStudio3D = new GuruStudio3D('main-3d-canvas');
+          }, 100);
+        } else {
+          mainStudio3D.onResize();
+        }
+      }
+    }
+
+    function downloadCanvasPlan() {
+      if (!planner2D) return;
+      const dataUrl = planner2D.exportPlanAsImage();
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `Guru-Construction-2D-Floor-Plan-${Date.now()}.png`;
+      a.click();
+      window.showToast("Export Ready", "Downloaded high-resolution 2D plan.", "success");
+    }
+
+    function handleSketchUploaded(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      if (mainStudio3D) {
+        mainStudio3D.convertSketchTo3D(file.name);
+      }
+    }
+
+    function renderTrackingCards() {
+      const list = document.getElementById('live-tracking-cards');
+      if (!list) return;
+
+      const projects = window.guruStore.getProjects();
+      list.innerHTML = projects.map(p => `
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span class="badge badge-primary">${p.id}</span>
+            <span class="badge ${p.paymentStatus === 'Paid' ? 'badge-success' : 'badge-warning'}">${p.paymentStatus}</span>
+          </div>
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;">${p.projectTitle}</h4>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Client: <strong>${p.clientName}</strong></div>
+
+          <!-- 5-Stage Stepper -->
+          <div class="stepper" style="margin: 1.25rem 0;">
+            <div class="step-item ${p.milestone >= 1 ? 'completed' : ''}">
+              <div class="step-circle">1</div>
+              <div class="step-title">Brief</div>
+            </div>
+            <div class="step-item ${p.milestone >= 2 ? 'completed' : p.milestone === 1 ? 'active' : ''}">
+              <div class="step-circle">2</div>
+              <div class="step-title">2D Vastu</div>
+            </div>
+            <div class="step-item ${p.milestone >= 3 ? 'completed' : p.milestone === 2 ? 'active' : ''}">
+              <div class="step-circle">3</div>
+              <div class="step-title">3D Facade</div>
+            </div>
+            <div class="step-item ${p.milestone >= 4 ? 'completed' : p.milestone === 3 ? 'active' : ''}">
+              <div class="step-circle">4</div>
+              <div class="step-title">Revisions</div>
+            </div>
+            <div class="step-item ${p.milestone >= 5 ? 'completed' : p.milestone === 4 ? 'active' : ''}">
+              <div class="step-circle">5</div>
+              <div class="step-title">Vault</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">
+              Total: <strong>₹${p.totalQuotation.toLocaleString('en-IN')}</strong>
+            </span>
+            <a href="client-portal.html?orderId=${p.id}" class="btn btn-outline btn-sm">Inspect Portal &rarr;</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Modal Operations
+    function openOrderModal() {
+      if (!currentEstimate || currentEstimate.grandTotal <= 0) {
+        window.showToast("Select Services", "Please choose at least one service before proceeding.", "warning");
+        return;
+      }
+      document.getElementById('modal-order-total').textContent = `₹${currentEstimate.grandTotal.toLocaleString('en-IN')}`;
+      document.getElementById('order-modal').classList.add('show');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('order-modal').classList.remove('show');
+    }
+
+    function submitProjectOrder() {
+      const name = document.getElementById('order-client-name').value.trim();
+      const email = document.getElementById('order-client-email').value.trim();
+      const phone = document.getElementById('order-client-phone').value.trim();
+      const title = document.getElementById('order-project-title').value.trim();
+      const notes = document.getElementById('order-notes').value.trim();
+
+      if (!name || !email || !phone || !title) {
+        alert("Please fill in your name, email, phone, and project title.");
+        return;
+      }
+
+      const length = parseFloat(document.getElementById('calc-length').value || 50);
+      const width = parseFloat(document.getElementById('calc-width').value || 40);
+      const floors = parseInt(document.getElementById('calc-floors').value || 2);
+      const selectedNames = currentEstimate.itemized.map(i => i.name);
+
+      const newId = `GC-2026-${Math.floor(100 + Math.random() * 900)}`;
+
+      const newOrder = {
+        id: newId,
+        clientName: name,
+        clientEmail: email,
+        clientPhone: phone,
+        projectTitle: title,
+        plotLength: length,
+        plotWidth: width,
+        totalFloors: floors,
+        roomCount: floors * 3,
+        vastuCompliant: true,
+        services: selectedNames,
+        totalQuotation: currentEstimate.grandTotal,
+        amountPaid: 0,
+        paymentStatus: "Pending",
+        status: "Drafting",
+        milestone: 2,
+        createdAt: new Date().toISOString(),
+        deliverables: [
+          {
+            id: "DEL-" + Date.now(),
+            name: "Initial Conceptual Vastu Floor Blueprint",
+            category: "2D Vastu Planning",
+            isWatermarked: true,
+            previewUrl: "assets/images/sample-blueprint.svg",
+            finalVaultUrl: "assets/images/sample-blueprint-clean.svg",
+            version: "1.0",
+            uploadedAt: new Date().toISOString()
+          }
+        ],
+        revisions: notes ? [
+          {
+            id: "REV-INIT",
+            date: new Date().toISOString(),
+            author: `Client (${name})`,
+            notes: notes,
+            status: "In-Progress"
+          }
+        ] : []
+      };
+
+      window.guruStore.saveProject(newOrder);
+
+      // Auto set session
+      window.guruStore.setCurrentUser({
+        role: 'client',
+        name: name,
+        email: email,
+        activeOrderId: newId
+      });
+
+      closeOrderModal();
+      window.showToast("Order Initiated!", `Order ${newId} placed successfully. Redirecting to Client Dashboard...`, "success");
+
+      setTimeout(() => {
+        window.location.href = `client-portal.html?orderId=${newId}`;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

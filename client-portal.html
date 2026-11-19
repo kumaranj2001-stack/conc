@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Delivery Portal &amp; File Vault | Guru Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-badge">🏗️</div>
+        <div>
+          <span>Guru Construction</span>
+          <span class="brand-tag">Client Delivery &amp; Inspection Portal</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <div id="user-badge-display" style="font-size: 0.9rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+          👤 <span id="client-name-display">Vikram Rathore</span>
+        </div>
+        <a href="index.html" class="btn btn-outline btn-sm">Home</a>
+        <a href="admin.html" class="btn btn-secondary btn-sm">Admin Switch 🔑</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Project Selector Banner for Multi-Project Clients -->
+  <div style="background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 0.75rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label style="font-weight: 700; font-size: 0.88rem; color: var(--text-muted);">Active Project File:</label>
+        <select id="project-selector" class="form-control" style="width: auto; min-width: 280px;" onchange="loadSelectedProject(this.value)">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span id="portal-payment-badge" class="badge badge-warning">Partial Payment</span>
+        <button class="btn btn-primary btn-sm" onclick="triggerClientPayment()">💳 Settle Payment Clearance</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 2rem 1.25rem 4rem;">
+    <!-- Active Project Overview Hero Card -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+            <span id="proj-id-badge" class="badge badge-primary">GC-2026-001</span>
+            <span id="proj-status-badge" class="badge badge-warning">Drafting &amp; Review</span>
+          </div>
+          <h2 id="proj-title" style="font-size: 1.85rem; font-weight: 800; color: var(--primary);">
+            Modern Duplex Villa with Vastu North-East Entry
+          </h2>
+          <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap;">
+            <span>📐 Plot: <strong id="proj-dims">40ft x 60ft (2,400 sq.ft)</strong></span>
+            <span>🏢 Floors: <strong id="proj-floors">G + 1</strong></span>
+            <span>🧭 Vastu Compliant: <strong style="color: var(--accent);">Yes (Certified)</strong></span>
+            <span>💰 Total Order: <strong id="proj-total-cost">₹68,500</strong></span>
+          </div>
+        </div>
+
+        <!-- Payment Progress Indicator -->
+        <div style="background: var(--bg-subtle); padding: 1rem 1.5rem; border-radius: var(--radius-md); text-align: right; min-width: 240px;">
+          <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Account Balance</div>
+          <div id="proj-paid-amount" style="font-size: 1.6rem; font-weight: 800; color: var(--accent); margin: 2px 0;">₹35,000 Paid</div>
+          <div id="proj-due-amount" style="font-size: 0.85rem; color: var(--danger); font-weight: 600;">Due Balance: ₹33,500</div>
+        </div>
+      </div>
+
+      <!-- Live 5-Step Project Pipeline Progression -->
+      <div style="margin-top: 2rem;">
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+          Live Deliverable Milestone Progression:
+        </div>
+        <div class="stepper" id="portal-stepper">
+          <div class="step-item" id="step-1">
+            <div class="step-circle">1</div>
+            <div class="step-title">Initial Consultation</div>
+          </div>
+          <div class="step-item" id="step-2">
+            <div class="step-circle">2</div>
+            <div class="step-title">2D Vastu Blueprint</div>
+          </div>
+          <div class="step-item" id="step-3">
+            <div class="step-circle">3</div>
+            <div class="step-title">3D Facade &amp; Elevation</div>
+          </div>
+          <div class="step-item" id="step-4">
+            <div class="step-circle">4</div>
+            <div class="step-title">Structural &amp; Revisions</div>
+          </div>
+          <div class="step-item" id="step-5">
+            <div class="step-circle">5</div>
+            <div class="step-title">Final Vault Unlocked</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Workboard: Left Deliverables, Right Feedback & Revisions -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem;">
+      
+      <!-- Left Column: Iterative Deliverables with Watermarked Previews & Vault Release -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📁 Architectural Deliverables &amp; File Vault</h3>
+          <span class="badge badge-primary">Version Controlled</span>
+        </div>
+
+        <!-- Alert Notification on Payment Gate -->
+        <div id="vault-security-alert" style="background: var(--warning-light); border: 1px solid #fde68a; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; gap: 10px;">
+          <div style="font-size: 1.3rem;">🔒</div>
+          <div style="font-size: 0.88rem; color: #92400e;">
+            <strong>Vault Gate Notice:</strong> Watermarked preview files are open for inspection and revision feedback. High-resolution print-ready CAD blueprints &amp; 3D videos will automatically unlock in the <strong>Digital Vault</strong> once final payment is cleared.
+          </div>
+        </div>
+
+        <div id="deliverables-list" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <!-- Deliverable items injected by JS -->
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Revision Request Engine & Project Timeline -->
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        
+        <!-- Submit Revision Request Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">✍️ Submit Revision Request</h3>
+            <span class="badge badge-warning">Direct Shop Feedback</span>
+          </div>
+
+          <form id="revision-form" onsubmit="submitRevision(event)">
+            <div class="form-group">
+              <label class="form-label">Deliverable to Revise:</label>
+              <select id="rev-target-deliverable" class="form-control form-select" required>
+                <!-- Populated by JS -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Specific Revision Instructions / Structural Adjustments:</label>
+              <textarea id="rev-notes" class="form-control" rows="4" placeholder="Detail any requested changes (e.g. increase master bedroom balcony width by 2 feet, shift kitchen counter location, adjust 3D facade color)..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Submit Revision to Architectural Team 📤
+            </button>
+          </form>
+        </div>
+
+        <!-- Revision History & Audit Trail -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🕒 Revision Log &amp; Staff Collaboration</h3>
+            <span class="badge badge-primary">Audit Trail</span>
+          </div>
+          <div id="revision-history-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto;">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Inspection Modal for Viewing Watermarked / Clean Drawings -->
+  <div id="preview-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 850px;">
+      <div class="modal-head">
+        <h3 id="preview-modal-title" class="card-title">Inspection Preview</h3>
+        <button onclick="closePreviewModal()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: center; background: #0f172a; padding: 1.5rem;">
+        <div id="modal-image-container" class="watermarked-container" style="max-height: 520px; overflow: hidden; border-radius: 6px;">
+          <img id="preview-modal-img" src="" alt="Draft Preview" style="width: 100%; object-fit: contain; max-height: 500px;">
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <span id="preview-modal-badge" class="badge badge-warning">WATERMARKED INSPECTION COPY</span>
+        <button class="btn btn-outline" onclick="closePreviewModal()">Close Preview</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+      Guru Construction Client Transparency Portal • Real-Time Firebase Spark Integration
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script>
+    let currentProject = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check query param for orderId
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryId = urlParams.get('orderId');
+
+      initProjectSelector(queryId);
+    });
+
+    function initProjectSelector(targetId) {
+      const select = document.getElementById('project-selector');
+      const projects = window.guruStore.getProjects();
+
+      if (projects.length === 0) {
+        alert("No projects found in database.");
+        return;
+      }
+
+      select.innerHTML = projects.map(p => `
+        <option value="${p.id}" ${p.id === targetId ? 'selected' : ''}>
+          ${p.id} - ${p.clientName} (${p.projectTitle.substring(0, 32)}...)
+        </option>
+      `).join('');
+
+      const activeId = targetId || projects[0].id;
+      loadSelectedProject(activeId);
+    }
+
+    function loadSelectedProject(id) {
+      currentProject = window.guruStore.getProjectById(id);
+      if (!currentProject) return;
+
+      // Update Client Name Badge
+      document.getElementById('client-name-display').textContent = currentProject.clientName;
+      document.getElementById('proj-id-badge').textContent = currentProject.id;
+      document.getElementById('proj-title').textContent = currentProject.projectTitle;
+      document.getElementById('proj-dims').textContent = `${currentProject.plotLength}ft x ${currentProject.plotWidth}ft (${currentProject.plotLength * currentProject.plotWidth} sq.ft)`;
+      document.getElementById('proj-floors').textContent = `G + ${currentProject.totalFloors - 1}`;
+      document.getElementById('proj-total-cost').textContent = `₹${currentProject.totalQuotation.toLocaleString('en-IN')}`;
+
+      // Payment Status UI
+      const isPaid = currentProject.paymentStatus === 'Paid';
+      const badge = document.getElementById('portal-payment-badge');
+      badge.textContent = isPaid ? 'Full Clearance Paid' : currentProject.paymentStatus + ' Payment';
+      badge.className = `badge ${isPaid ? 'badge-success' : 'badge-warning'}`;
+
+      document.getElementById('proj-paid-amount').textContent = `₹${currentProject.amountPaid.toLocaleString('en-IN')} Paid`;
+      const due = Math.max(0, currentProject.totalQuotation - currentProject.amountPaid);
+      document.getElementById('proj-due-amount').textContent = due === 0 ? 'Zero Balance Due' : `Due Balance: ₹${due.toLocaleString('en-IN')}`;
+
+      // Stepper
+      updateStepper(currentProject.milestone);
+
+      // Deliverables
+      renderDeliverables();
+
+      // Revision dropdown & log
+      renderRevisionSection();
+    }
+
+    function updateStepper(step) {
+      for (let i = 1; i <= 5; i++) {
+        const item = document.getElementById(`step-${i}`);
+        if (!item) continue;
+        item.classList.remove('completed', 'active');
+        if (i < step) {
+          item.classList.add('completed');
+        } else if (i === step) {
+          item.classList.add('active');
+        }
+      }
+    }
+
+    function renderDeliverables() {
+      const list = document.getElementById('deliverables-list');
+      const isPaid = currentProject.paymentStatus === 'Paid';
+
+      // Update Gate Warning
+      const alertBox = document.getElementById('vault-security-alert');
+      if (isPaid) {
+        alertBox.style.background = 'var(--accent-light)';
+        alertBox.style.borderColor = '#a7f3d0';
+        alertBox.innerHTML = `
+          <div style="font-size: 1.3rem;">🔓</div>
+          <div style="font-size: 0.88rem; color: #065f46;">
+            <strong>Payment Clearance Verified!</strong> Digital Vault unlocked. Unwatermarked, production-ready full resolution CAD and PDF blueprints are available below.
+          </div>
+        `;
+      }
+
+      if (!currentProject.deliverables || currentProject.deliverables.length === 0) {
+        list.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">No deliverables uploaded yet by shop staff.</div>`;
+        return;
+      }
+
+      list.innerHTML = currentProject.deliverables.map(del => `
+        <div class="card" style="padding: 1.25rem; border: 1px solid var(--border); background: var(--bg-subtle);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+            <div>
+              <div style="font-weight: 700; color: var(--primary); font-size: 1rem;">${del.name}</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">
+                Category: <strong>${del.category}</strong> • Version: <strong>Rev ${del.version}</strong>
+              </div>
+            </div>
+            <span class="badge ${isPaid ? 'badge-success' : 'badge-warning'}">
+              ${isPaid ? 'Vault Unlocked' : 'Watermarked Draft'}
+            </span>
+          </div>
+
+          <div style="position: relative; max-height: 180px; overflow: hidden; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 1rem; background: #fff;">
+            <img src="${isPaid ? del.finalVaultUrl : del.previewUrl}" alt="Preview" style="width: 100%; object-fit: cover; max-height: 180px;">
+            ${!isPaid ? `
+              <div style="position: absolute; inset: 0; background: rgba(220, 38, 38, 0.08); display: flex; align-items: center; justify-content: center; pointer-events: none;">
+                <div style="color: rgba(220, 38, 38, 0.4); font-weight: 800; transform: rotate(-15deg); border: 2px dashed rgba(220, 38, 38, 0.4); padding: 4px 14px; font-size: 1.1rem;">
+                  INSPECTION WATERMARK
+                </div>
+              </div>
+            ` : ''}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+            <button class="btn btn-outline btn-sm" onclick="openPreviewModal('${del.name}', '${isPaid ? del.finalVaultUrl : del.previewUrl}', ${!isPaid})">
+              🔍 Inspect High-Res
+            </button>
+
+            ${isPaid ? `
+              <a href="${del.finalVaultUrl}" download="${del.name}.svg" class="btn btn-success btn-sm">
+                ⬇️ Download Clean CAD / Vault File
+              </a>
+            ` : `
+              <button class="btn btn-outline btn-sm" disabled style="cursor: not-allowed; opacity: 0.7; color: var(--danger);">
+                🔒 Vault Gated (Awaiting Clearance)
+              </button>
+            `}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderRevisionSection() {
+      const select = document.getElementById('rev-target-deliverable');
+      const hist = document.getElementById('revision-history-list');
+
+      if (currentProject.deliverables && currentProject.deliverables.length > 0) {
+        select.innerHTML = currentProject.deliverables.map(d => `<option value="${d.name}">${d.name} (Rev ${d.version})</option>`).join('');
+      } else {
+        select.innerHTML = `<option value="General">Entire Floor Plan &amp; Elevation</option>`;
+      }
+
+      if (!currentProject.revisions || currentProject.revisions.length === 0) {
+        hist.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem; font-style: italic;">No revision requests logged yet.</div>`;
+      } else {
+        hist.innerHTML = currentProject.revisions.map(r => `
+          <div style="padding: 0.75rem; border-radius: var(--radius-sm); background: var(--bg-subtle); border-left: 3px solid var(--secondary);">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px;">
+              <strong>${r.author}</strong>
+              <span>${new Date(r.date).toLocaleDateString()}</span>
+            </div>
+            <div style="font-size: 0.86rem; color: var(--text-main);">${r.notes}</div>
+            <div style="margin-top: 4px;">
+              <span class="badge ${r.status === 'Completed' ? 'badge-success' : 'badge-warning'}" style="font-size: 0.7rem;">
+                Status: ${r.status}
+              </span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function submitRevision(e) {
+      e.preventDefault();
+      const target = document.getElementById('rev-target-deliverable').value;
+      const notes = document.getElementById('rev-notes').value.trim();
+
+      if (!notes) return;
+
+      const newRev = {
+        id: "REV-" + Date.now(),
+        date: new Date().toISOString(),
+        author: `Client (${currentProject.clientName})`,
+        notes: `[${target}] ${notes}`,
+        status: "In-Progress"
+      };
+
+      if (!currentProject.revisions) currentProject.revisions = [];
+      currentProject.revisions.unshift(newRev);
+      currentProject.status = "Review & Drafting";
+
+      // Save to store
+      window.guruStore.saveProject(currentProject);
+      window.guruStore.addNotification(
+        "Client Revision Request",
+        `${currentProject.clientName} submitted a revision request for ${target} on ${currentProject.id}.`,
+        "staff"
+      );
+
+      document.getElementById('rev-notes').value = "";
+      renderRevisionSection();
+      window.showToast("Revision Submitted", "Architectural drafting team notified.", "success");
+    }
+
+    function triggerClientPayment() {
+      const due = currentProject.totalQuotation - currentProject.amountPaid;
+      if (due <= 0) {
+        window.showToast("Account Settled", "Full payment has already been cleared for this project.", "info");
+        return;
+      }
+
+      if (confirm(`Simulate payment clearance of remaining ₹${due.toLocaleString('en-IN')} balance via Shop Gateway?`)) {
+        currentProject.amountPaid = currentProject.totalQuotation;
+        currentProject.paymentStatus = "Paid";
+        currentProject.milestone = 5;
+        currentProject.status = "Completed";
+
+        window.guruStore.saveProject(currentProject);
+        window.guruStore.addNotification(
+          "Payment Cleared",
+          `Client settled full clearance of ₹${due.toLocaleString('en-IN')}. Vault unlocked!`,
+          "both"
+        );
+
+        loadSelectedProject(currentProject.id);
+        window.showToast("Payment Cleared!", "Digital Vault unlocked. Clean CAD files are now available.", "success");
+      }
+    }
+
+    function openPreviewModal(title, imgUrl, isWatermarked) {
+      document.getElementById('preview-modal-title').textContent = title;
+      document.getElementById('preview-modal-img').src = imgUrl;
+
+      const badge = document.getElementById('preview-modal-badge');
+      if (isWatermarked) {
+        badge.textContent = "INSPECTION DRAFT (WATERMARKED)";
+        badge.className = "badge badge-warning";
+      } else {
+        badge.textContent = "FINAL VAULT APPROVED (PRODUCTION READY)";
+        badge.className = "badge badge-success";
+      }
+
+      document.getElementById('preview-modal').classList.add('show');
+    }
+
+    function closePreviewModal() {
+      document.getElementById('preview-modal').classList.remove('show');
+    }
+  </script>
+</body>
+</html>

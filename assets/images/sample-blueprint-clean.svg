@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background Blueprint Paper -->
+  <rect width="800" height="600" fill="#f8fafc" />
+  <rect width="800" height="600" fill="url(#grid)" />
+
+  <!-- Outer Boundary Wall -->
+  <rect x="80" y="60" width="640" height="480" fill="#ffffff" stroke="#1e3a8a" stroke-width="6" rx="4" filter="url(#shadow)" />
+
+  <!-- Vastu Grid Compass Indicator -->
+  <circle cx="120" cy="100" r="30" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="120" y="85" text-anchor="middle" font-family="sans-serif" font-weight="900" fill="#dc2626" font-size="14">N (Kuber)</text>
+  <text x="145" y="105" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#1e3a8a" font-size="12">E (Indra)</text>
+  <text x="120" y="125" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#64748b" font-size="12">S (Yama)</text>
+  <text x="95" y="105" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="#64748b" font-size="12">W (Varun)</text>
+
+  <!-- Internal Rooms -->
+  <!-- Master Bed (South-West / Nairutya) -->
+  <rect x="80" y="340" width="280" height="200" fill="#fdf2f8" stroke="#1e3a8a" stroke-width="3" />
+  <text x="220" y="430" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#831843" font-size="16">MASTER BEDROOM</text>
+  <text x="220" y="455" text-anchor="middle" font-family="sans-serif" fill="#64748b" font-size="13">14'0" x 16'6" [Vastu: SW / Earth]</text>
+
+  <!-- Living Hall (Brahmasthan / Center) -->
+  <rect x="80" y="60" width="360" height="280" fill="#f0fdf4" stroke="#1e3a8a" stroke-width="3" />
+  <text x="260" y="190" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#166534" font-size="18">LIVING &amp; DRAWING HALL</text>
+  <text x="260" y="215" text-anchor="middle" font-family="sans-serif" fill="#64748b" font-size="13">22'0" x 18'0" [Spacious North View]</text>
+
+  <!-- Pooja Room (North-East / Ishanya Corner) -->
+  <rect x="440" y="60" width="160" height="140" fill="#fefce8" stroke="#d97706" stroke-width="3" />
+  <text x="520" y="125" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#b45309" font-size="14">POOJA ROOM</text>
+  <text x="520" y="145" text-anchor="middle" font-family="sans-serif" fill="#d97706" font-size="11">NE / Divine</text>
+
+  <!-- Kitchen (South-East / Agneya Corner) -->
+  <rect x="440" y="340" width="280" height="200" fill="#fff7ed" stroke="#ea580c" stroke-width="3" />
+  <text x="580" y="430" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#c2410c" font-size="16">KITCHEN &amp; DINING</text>
+  <text x="580" y="455" text-anchor="middle" font-family="sans-serif" fill="#64748b" font-size="13">16'0" x 14'0" [Vastu: Fire / SE]</text>
+
+  <!-- Guest Bedroom (North-West / Vayavya) -->
+  <rect x="440" y="200" width="280" height="140" fill="#f1f5f9" stroke="#1e3a8a" stroke-width="3" />
+  <text x="580" y="265" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#334155" font-size="15">BEDROOM 2 / STUDY</text>
+  <text x="580" y="290" text-anchor="middle" font-family="sans-serif" fill="#64748b" font-size="12">14'0" x 11'0" [NW / Air]</text>
+
+  <!-- Dimension Markers -->
+  <line x1="80" y1="40" x2="720" y2="40" stroke="#64748b" stroke-width="2" marker-start="dot" marker-end="dot"/>
+  <text x="400" y="32" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="14">TOTAL LENGTH: 60'-0"</text>
+
+  <line x1="740" y1="60" x2="740" y2="540" stroke="#64748b" stroke-width="2"/>
+  <text x="765" y="300" text-anchor="middle" transform="rotate(90, 765, 300)" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="14">WIDTH: 40'-0"</text>
+
+  <!-- Title Block Bottom Right -->
+  <rect x="450" y="470" width="260" height="60" fill="#1e3a8a" rx="4" />
+  <text x="580" y="495" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#ffffff" font-size="13">GURU CONSTRUCTION</text>
+  <text x="580" y="515" text-anchor="middle" font-family="sans-serif" fill="#93c5fd" font-size="11">Vastu Compliant 2D Master Blueprint</text>
+</svg>

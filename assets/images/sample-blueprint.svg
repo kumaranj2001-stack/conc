@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <!-- Embed the clean blueprint base -->
+  <image href="sample-blueprint-clean.svg" width="800" height="600" />
+  
+  <!-- Diagonal Watermark Pattern -->
+  <g opacity="0.35" transform="rotate(-30 400 300)">
+    <rect x="50" y="240" width="700" height="120" fill="none" stroke="#dc2626" stroke-width="4" stroke-dasharray="15,10" rx="10"/>
+    <text x="400" y="295" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="34" fill="#dc2626" letter-spacing="4">
+      GURU CONSTRUCTION - INSPECTION DRAFT
+    </text>
+    <text x="400" y="335" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="20" fill="#dc2626" letter-spacing="2">
+      PREVIEW COPY • FINAL VAULT RELEASE GATED UPON CLEARANCE
+    </text>
+  </g>
+</svg>

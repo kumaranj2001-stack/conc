@@ -1,0 +1,34 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isStaff() {
+      return isAuthenticated() && (
+        request.auth.token.role == 'staff' ||
+        request.auth.token.role == 'admin' ||
+        request.auth.token.email.matches('.*@guruconstruction\\.com$')
+      );
+    }
+
+    // Inspection Previews (watermarked images / low-res PDFs)
+    match /previews/{allPaths=**} {
+      // Anyone can inspect watermarked drafts
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // Secure Vault: Final unwatermarked CAD, high-res blueprints & videos
+    // Only unlocked if user is staff or payment clearance has been verified
+    match /vault/{projectId}/{fileName} {
+      allow read: if isStaff() || (
+        isAuthenticated() && 
+        firestore.get(/databases/(default)/documents/projects/$(projectId)).data.paymentStatus == 'Paid'
+      );
+      allow write: if isStaff();
+    }
+  }
+}

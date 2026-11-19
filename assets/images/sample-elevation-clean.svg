@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="60%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="800" height="420" fill="url(#sky)"/>
+  
+  <!-- Lush Green Ground Lawn -->
+  <rect y="420" width="800" height="180" fill="#15803d"/>
+  <rect y="450" width="800" height="150" fill="#166534"/>
+
+  <!-- Driveway / Pavers -->
+  <polygon points="280,600 520,600 480,450 320,450" fill="#94a3b8" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Villa Ground Floor -->
+  <rect x="180" y="270" width="440" height="160" fill="url(#wall)" stroke="#334155" stroke-width="3" rx="4"/>
+  
+  <!-- Modern Main Wooden Double Door -->
+  <rect x="360" y="310" width="80" height="120" fill="url(#wood)" stroke="#78350f" stroke-width="2"/>
+  <line x1="400" y1="310" x2="400" y2="430" stroke="#451a03" stroke-width="2"/>
+  <circle cx="390" cy="370" r="4" fill="#fbbf24"/>
+  <circle cx="410" cy="370" r="4" fill="#fbbf24"/>
+
+  <!-- Ground Large French Windows with Tinted Glass -->
+  <rect x="210" y="310" width="110" height="90" fill="url(#glass)" stroke="#0f172a" stroke-width="3"/>
+  <line x1="265" y1="310" x2="265" y2="400" stroke="#ffffff" stroke-width="2"/>
+  <rect x="480" y="310" width="110" height="90" fill="url(#glass)" stroke="#0f172a" stroke-width="3"/>
+  <line x1="535" y1="310" x2="535" y2="400" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Villa First Floor Cantilever Deck -->
+  <rect x="150" y="120" width="500" height="150" fill="#f8fafc" stroke="#1e3a8a" stroke-width="4" rx="4"/>
+  
+  <!-- Architectural Wooden Louver Accent Wall -->
+  <rect x="460" y="130" width="170" height="130" fill="#b45309" rx="2"/>
+  <line x1="480" y1="130" x2="480" y2="260" stroke="#fef3c7" stroke-width="4"/>
+  <line x1="510" y1="130" x2="510" y2="260" stroke="#fef3c7" stroke-width="4"/>
+  <line x1="540" y1="130" x2="540" y2="260" stroke="#fef3c7" stroke-width="4"/>
+  <line x1="570" y1="130" x2="570" y2="260" stroke="#fef3c7" stroke-width="4"/>
+  <line x1="600" y1="130" x2="600" y2="260" stroke="#fef3c7" stroke-width="4"/>
+
+  <!-- Balcony Glass Railing -->
+  <rect x="170" y="210" width="260" height="60" fill="#bae6fd" fill-opacity="0.6" stroke="#0284c7" stroke-width="2"/>
+  <line x1="170" y1="210" x2="430" y2="210" stroke="#0f172a" stroke-width="3"/>
+
+  <!-- Upper Bedroom Sliding Glass Facade -->
+  <rect x="180" y="135" width="240" height="75" fill="url(#glass)" stroke="#334155" stroke-width="2"/>
+
+  <!-- Roof Pergola and Parapet -->
+  <rect x="130" y="105" width="540" height="18" fill="#1e3a8a" rx="2"/>
+
+  <!-- Warm Exterior Spotlights -->
+  <circle cx="210" cy="275" r="5" fill="#fef08a"/>
+  <circle cx="590" cy="275" r="5" fill="#fef08a"/>
+
+  <!-- Title Badge -->
+  <rect x="30" y="30" width="290" height="65" fill="#ffffff" rx="8" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
+  <text x="50" y="58" font-family="sans-serif" font-weight="bold" fill="#1e3a8a" font-size="16">3D CONTEMPORARY ELEVATION</text>
+  <text x="50" y="78" font-family="sans-serif" fill="#64748b" font-size="12">Guru Construction Studio • Clean Deliverable</text>
+</svg>
