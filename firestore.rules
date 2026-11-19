@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for Role-Based Access Control (RBAC)
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isStaff() {
+      return isAuthenticated() && (
+        request.auth.token.role == 'staff' ||
+        request.auth.token.role == 'admin' ||
+        request.auth.token.email.matches('.*@guruconstruction\\.com$')
+      );
+    }
+
+    function isProjectOwner(projectId) {
+      return isAuthenticated() && (
+        resource.data.clientEmail == request.auth.token.email ||
+        resource.data.clientId == request.auth.uid
+      );
+    }
+
+    // Projects Collection: Stores blueprints, quotations, and milestones
+    match /projects/{projectId} {
+      // Staff has full read/write access
+      // Clients can read only their own projects
+      allow read: if isStaff() || isProjectOwner(projectId);
+      allow create: if isStaff() || isAuthenticated();
+      allow update: if isStaff() || isProjectOwner(projectId);
+      allow delete: if isStaff();
+
+      // Nested Deliverables (watermarked drafts vs unlocked vault)
+      match /deliverables/{deliverableId} {
+        allow read: if isStaff() || (
+          isProjectOwner(projectId) && (
+            resource.data.isWatermarked == true || 
+            get(/databases/$(database)/documents/projects/$(projectId)).data.paymentStatus == 'Paid'
+          )
+        );
+        allow write: if isStaff();
+      }
+
+      // Nested Revisions: Clients can append revision requests
+      match /revisions/{revisionId} {
+        allow read: if isStaff() || isProjectOwner(projectId);
+        allow create: if isStaff() || isProjectOwner(projectId);
+        allow update, delete: if isStaff();
+      }
+    }
+
+    // Notifications Collection
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated();
+      allow write: if isStaff();
+    }
+  }
+}
